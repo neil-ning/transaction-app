@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <form [formGroup]="transactionForm" (ngSubmit)="save()">
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input id="id" class="form-control" formControlName="id" readonly>
+    </div>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input id="date" class="form-control" formControlName="date" readonly>
+    </div>
+    <div class="form-group">
+      <label for="comments">Comments</label>
+      <input id="comments" class="form-control" formControlName="comments">
+      <div *ngIf="transactionForm.get('comments').invalid && (transactionForm.get('comments').dirty || transactionForm.get('comments').touched)" class="alert alert-danger">
+        Comments are required and must be alphanumeric.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="transactionForm.invalid">Save</button>
+  </form>
+</div>
